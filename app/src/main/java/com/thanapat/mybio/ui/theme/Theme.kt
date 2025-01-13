@@ -13,7 +13,7 @@ import androidx.compose.ui.platform.LocalContext
 
 private val AppColorTheme = lightColorScheme(
     primary = Blue,
-    background = WhiteBG
+    background = WhiteBG,
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
