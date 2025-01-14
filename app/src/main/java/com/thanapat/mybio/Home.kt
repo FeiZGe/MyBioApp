@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,10 +21,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -33,39 +39,58 @@ import com.thanapat.mybio.ui.theme.Grey
 import com.thanapat.mybio.ui.theme.White
 
 @Composable
-fun Home(navigationController: NavController) {
+fun Home() {
+    val gradientColors = listOf(BlackText, Blue)
+
     Box(modifier = Modifier.fillMaxSize()
         .padding(35.dp)) {
         Column(modifier = Modifier.fillMaxWidth()
-            .align(Alignment.Center)
-            .background(
-                color = Color.White, // สีพื้นหลังของ Box
-                shape = RoundedCornerShape(20.dp) // ขอบโค้ง
-            )
-            .padding(25.dp)
-            .height(350.dp),
-            horizontalAlignment = Alignment.Start,
+            .align(Alignment.Center),
+            horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text = "Hi, there🤚", fontSize = 50.sp, color = BlackText, fontWeight = Bold)
-            Spacer(modifier = Modifier.height(15.dp))
-            Text(text = "I'm Thanapat", fontSize = 40.sp, color = BlackText, fontWeight = Bold)
-            Text(text = "Nawang", fontSize = 40.sp, color = BlackText, fontWeight = Bold)
+            Image(
+                painter = painterResource(id = R.drawable.profile_home),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(190.dp)
+                    .shadow(elevation = 10.dp, shape = CircleShape)
+                    .clip(CircleShape)
+            )
+            Spacer(modifier = Modifier.height(30.dp))
+            Text(
+                text = "Hi🤚, I'm",
+                fontSize = 50.sp,
+                color = BlackText,
+                fontWeight = Bold
+            )
             Spacer(modifier = Modifier.height(10.dp))
-            Text(text = "A third year ComSCI student.", fontSize = 18.sp, color = Grey)
-            Spacer(modifier = Modifier.height(15.dp))
-            // ปุ่มเพื่อไปหน้า About
-            Button(
-                onClick = {
-                    navigationController.navigate(Screens.About.screen) // นำทางไปหน้า About
-                },
-                colors = buttonColors(
-                    containerColor = Blue,
-                    contentColor = White
-                ),
-                shape = RoundedCornerShape(12.dp)
-            ) {
-                Text(text = "About Me", fontSize = 18.sp)
+            Row(modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center) {
+                Text(
+                    text = "Thanapat",
+                    fontSize = 32.sp,
+                    fontWeight = Bold,
+                    style = TextStyle(
+                        brush = Brush.linearGradient(
+                            colors = gradientColors
+                        )
+                    )
+                )
+                Text(
+                    text = " Nawang",
+                    fontSize = 32.sp,
+                    color = BlackText,
+                    fontWeight = Bold
+                )
             }
+            Spacer(modifier = Modifier.height(15.dp))
+            Text(
+                text = "A third year ComSCI student.",
+                fontSize = 18.sp,
+                color = Grey
+            )
+
         }
     }
 }

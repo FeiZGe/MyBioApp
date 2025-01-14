@@ -236,7 +236,7 @@ fun MyBottomAppBar() {
             startDestination = Screens.Home.screen,
             modifier = Modifier.padding(paddingValues)
         ) {
-            composable(Screens.Home.screen) { Home(navigationController) }
+            composable(Screens.Home.screen) { Home() }
             composable(Screens.About.screen) { About() }
             composable(Screens.Skill.screen) { Skill() }
             composable(Screens.Project.screen) { Project() }
