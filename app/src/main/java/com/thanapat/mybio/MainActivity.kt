@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -70,7 +71,7 @@ fun MyBottomAppBar() {
         bottomBar = {
             Box(
                 modifier = Modifier
-                    .padding(16.dp) // เพิ่ม margin รอบ BottomAppBar
+                    .padding(PaddingValues(start = 15.dp, bottom = 10.dp, end = 15.dp)) // เพิ่ม margin รอบ BottomAppBar
             ) {
                 Surface(
                     shape = RoundedCornerShape(16.dp), // ปรับขอบโค้ง
